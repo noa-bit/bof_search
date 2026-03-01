@@ -3,3 +3,4 @@ test.py
 .env
 prospects.json
 data.json
+__pycache__/
