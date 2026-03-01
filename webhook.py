@@ -1,9 +1,9 @@
-import requests
+from requests import post
 from dotenv import load_dotenv
-import os
+from os import getenv
 
 load_dotenv()
-URL = os.getenv("WEBHOOK_URL")
+URL = getenv("WEBHOOK_URL")
 
 def webhook(title="Ny annons hittad", description="s", url="https://bostad.stockholm.se/bostad", fields=None):
 
@@ -15,7 +15,7 @@ def webhook(title="Ny annons hittad", description="s", url="https://bostad.stock
         }]
     }
 
-    response = requests.post(URL, json=payload)
+    response = post(URL, json=payload)
     
     if response.status_code == 204:
         print("Notification sent!")
