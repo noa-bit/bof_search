@@ -5,12 +5,12 @@ import os
 load_dotenv()
 URL = os.getenv("WEBHOOK_URL")
 
-def webhook(title, description, color=0x3498db, fields=None):
+def webhook(title="Ny annons hittad", description="s", url="https://bostad.stockholm.se/bostad", fields=None):
 
     payload = {"embeds": [{
         "title": title,
         "description": description,
-        "color": color,
+        "url": url
         #"fields": fields or []
         }]
     }
@@ -20,6 +20,7 @@ def webhook(title, description, color=0x3498db, fields=None):
     if response.status_code == 204:
         print("Notification sent!")
     else:
-        print(f"Failed: {response.status_code} - {response.text}")
+        print(f"Failed: {response.status_code},  {response.text}")
 
-webhook(title="hej", description="beskrivning")
+if __name__ == "__main__":
+    webhook(title="hej", description="beskrivning")
